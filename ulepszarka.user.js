@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Ulepszarka SI
 // @namespace    local.codex.margonem.ulepszarka
-// @version      0.3.0
+// @version      0.3.1
 // @description  Niezalezny modul Ulepszarki do Panelu dodatkow.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
@@ -262,10 +262,17 @@ function siUlepszarka(){
     ulepszarkaLauncher.textContent = 'U';
     Object.assign(ulepszarkaLauncher.style, {
         position: 'fixed', zIndex: '999999', width: '26px', height: '26px', padding: '0',
-        display: 'grid', placeItems: 'center', color: '#ffe66b', background: 'rgba(12,29,62,.96)',
-        border: '1px solid #3977c8', boxShadow: '0 0 6px rgba(57,119,200,.7)', cursor: 'pointer',
+        display: 'grid', placeItems: 'center', cursor: 'pointer',
         font: '700 14px/1 Arial, sans-serif'
     });
+    const updateUlepszarkaLauncher = () => Object.assign(ulepszarkaLauncher.style, work ? {
+        color: '#63dc72', background: 'rgba(12,38,18,.94)', border: '1px solid #35b653',
+        boxShadow: '0 0 7px rgba(53,182,83,.8)'
+    } : {
+        color: '#ff5252', background: 'rgba(38,15,15,.94)', border: '1px solid #d83b3b',
+        boxShadow: '0 0 6px rgba(216,59,59,.65)'
+    });
+    updateUlepszarkaLauncher();
     document.body.appendChild(ulepszarkaLauncher);
     ulepszarkaLauncher.addEventListener('click', event => {
         event.preventDefault();
@@ -369,6 +376,7 @@ function siUlepszarka(){
     globalBox.appendChild(activ);
     activ.addEventListener('click',()=>{
         work=!work;
+        updateUlepszarkaLauncher();
         if(work == true) activ.style.background = 'green';
         else activ.style.background = 'red';
         message('Stan Ulepszarki ' + work)
