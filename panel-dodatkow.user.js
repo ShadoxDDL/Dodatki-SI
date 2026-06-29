@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Panel dodatkow
 // @namespace    local.codex.margonem.panel
-// @version      1.1.0
+// @version      1.1.1
 // @description  Wspolna zwijana belka dla niezaleznych dodatkow Margonem.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/panel-dodatkow.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/panel-dodatkow.user.js
@@ -16,10 +16,10 @@
 
     const STORAGE_KEY = 'codex_addon_panel_collapsed';
     const BUTTON_IDS = [
-        'Auto-X-launcher',
-        'codex-ulepszarka-launcher',
         'codex-stones-launcher',
-        'codex-auto-bless-button'
+        'codex-auto-bless-button',
+        'Auto-X-launcher',
+        'codex-ulepszarka-launcher'
     ];
     let collapsed = localStorage.getItem(STORAGE_KEY) === '1';
 
@@ -104,10 +104,14 @@ border-radius:0 0 3px 3px!important;
         };
 
         const collectButtons = () => {
-            for (const id of BUTTON_IDS) {
-                const button = document.getElementById(id);
-                if (button && button.parentElement !== items) items.append(button);
-            }
+            const buttons = BUTTON_IDS
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+            buttons.forEach((button, index) => {
+                if (items.children[index] !== button) {
+                    items.insertBefore(button, items.children[index] || null);
+                }
+            });
         };
 
         const position = () => {
