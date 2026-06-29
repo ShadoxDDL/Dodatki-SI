@@ -11,14 +11,14 @@
 // @exclude      *://margonem.pl/*
 // @exclude      *://forum.margonem.pl/*
 // @exclude      *://commons.margonem.pl/*
-// @grant        unsafeWindow
+// @grant        none
 // @run-at       document-start
 // ==/UserScript==
 
 (() => {
   "use strict";
 
-  const page = unsafeWindow;
+  const page = window;
   const TAG = "[Auto Kalendarz SI]";
   const MIN_LEVEL = 25;
   const RETRY_DELAY = 12 * 60 * 60 * 1000;

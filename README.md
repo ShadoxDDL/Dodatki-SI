@@ -8,6 +8,8 @@ Zainstaluj osobno:
 4. ulepszarka.user.js
 5. auto-kalendarz.user.js
 
+Alternatywnie zainstaluj tylko pakiet.user.js, aby Tampermonkey zaladowal wszystkie moduly automatycznie.
+
 Panel automatycznie wykrywa zainstalowane dodatki i uklada ich ikony pionowo.
 Kazdy dodatek mozna aktualizowac i usuwac niezaleznie.
 
