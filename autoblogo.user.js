@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Auto Blogoslawienstwo
 // @namespace    local.codex.margonem.autobless
-// @version      1.9.1
+// @version      1.9.2
 // @description  Niezalezny modul Auto Blogoslawienstwo do Panelu dodatkow.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autoblogo.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autoblogo.user.js
@@ -250,10 +250,11 @@
     const style = document.createElement('style');
     style.textContent = `
       #codex-auto-bless-button{position:fixed;z-index:999999;width:26px;height:26px;padding:0;
-      display:grid;place-items:center;color:#ff5252;background:rgba(38,15,15,.94);border:1px solid #d83b3b;
+      display:grid;place-items:center;color:#ff5252;background-color:rgba(38,15,15,.94);border:1px solid #d83b3b;
       border-radius:3px;box-shadow:0 0 6px rgba(216,59,59,.65),0 2px 7px #000;cursor:pointer;
-      font:16px/1 Arial,sans-serif;touch-action:manipulation}
-      #codex-auto-bless-button.active{color:#63dc72;background:rgba(12,38,18,.94);border-color:#35b653;
+      font:16px/1 Arial,sans-serif;touch-action:manipulation;background-image:url('https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/assets/autoblogo-icon.gif');
+      background-position:center;background-repeat:no-repeat;background-size:22px 22px}
+      #codex-auto-bless-button.active{color:#63dc72;background-color:rgba(12,38,18,.94);border-color:#35b653;
       box-shadow:0 0 7px rgba(53,182,83,.8),0 2px 7px #000}
       #codex-auto-bless{position:fixed;z-index:1000000;width:230px;padding:5px;
       color:#eee;background:rgba(14,18,14,.97);border:1px solid #35a853;border-radius:7px;
@@ -277,7 +278,7 @@
     launcher.type = 'button';
     launcher.title = 'Auto błogosławieństwo';
     launcher.setAttribute('aria-label', 'Otwórz auto błogosławieństwo');
-    launcher.textContent = '✦';
+    launcher.textContent = '';
     document.body.appendChild(launcher);
 
     panel = document.createElement('div');
