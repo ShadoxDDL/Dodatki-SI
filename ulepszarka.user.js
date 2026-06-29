@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Ulepszarka SI
 // @namespace    local.codex.margonem.ulepszarka
-// @version      0.3.2
+// @version      0.3.3
 // @description  Niezalezny modul Ulepszarki do Panelu dodatkow.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
@@ -267,13 +267,16 @@ function siUlepszarka(){
         backgroundImage: "url('https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/assets/ulepszarka-icon.png')",
         backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '21px 21px'
     });
-    const updateUlepszarkaLauncher = () => Object.assign(ulepszarkaLauncher.style, work ? {
+    const updateUlepszarkaLauncher = () => {
+        ulepszarkaLauncher.classList.toggle('active', work);
+        Object.assign(ulepszarkaLauncher.style, work ? {
         color: '#63dc72', backgroundColor: 'rgba(12,38,18,.94)', border: '1px solid #35b653',
         boxShadow: '0 0 7px rgba(53,182,83,.8)'
     } : {
         color: '#ff5252', backgroundColor: 'rgba(38,15,15,.94)', border: '1px solid #d83b3b',
         boxShadow: '0 0 6px rgba(216,59,59,.65)'
-    });
+        });
+    };
     updateUlepszarkaLauncher();
     document.body.appendChild(ulepszarkaLauncher);
     ulepszarkaLauncher.addEventListener('click', event => {

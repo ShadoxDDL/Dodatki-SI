@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Panel dodatkow
 // @namespace    local.codex.margonem.panel
-// @version      1.1.1
+// @version      1.1.2
 // @description  Wspolna zwijana belka dla niezaleznych dodatkow Margonem.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/panel-dodatkow.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/panel-dodatkow.user.js
@@ -50,6 +50,7 @@ font:700 10px/12px Arial,Helvetica,sans-serif;
 #codex-addon-dock-items {
 display:flex;
 flex-direction:column;
+gap:1px;
 max-height:260px;
 opacity:1;
 overflow:hidden;
@@ -64,7 +65,8 @@ transform:translateY(-104px);
 pointer-events:none;
 }
 #codex-addon-dock-items > button {
-position:static!important;
+position:relative!important;
+z-index:1!important;
 inset:auto!important;
 flex:0 0 26px!important;
 width:26px!important;
@@ -77,6 +79,9 @@ border-radius:0!important;
 transform:none!important;
 visibility:visible!important;
 pointer-events:auto!important;
+}
+#codex-addon-dock-items > button.active {
+z-index:2!important;
 }
 #codex-addon-dock-items > button:last-child {
 border-radius:0 0 3px 3px!important;
