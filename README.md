@@ -6,7 +6,8 @@ Zainstaluj osobno:
 2. autox.user.js
 3. autoblogo.user.js
 4. ulepszarka.user.js
-5. auto-kalendarz.user.js
+5. kamyki.user.js
+6. auto-kalendarz.user.js
 
 Alternatywnie zainstaluj tylko pakiet.user.js, aby Tampermonkey zaladowal wszystkie moduly automatycznie.
 
