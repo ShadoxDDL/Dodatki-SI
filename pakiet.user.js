@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dodatki-SI
-// @version      1.2.1
+// @version      1.2.2
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/pakiet.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/pakiet.user.js
 // @match        http*://*.margonem.pl/*

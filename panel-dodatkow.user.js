@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Panel dodatkow
 // @namespace    local.codex.margonem.panel
-// @version      1.1.2
+// @version      1.1.3
 // @description  Wspolna zwijana belka dla niezaleznych dodatkow Margonem.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/panel-dodatkow.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/panel-dodatkow.user.js
@@ -15,6 +15,19 @@
     'use strict';
 
     const STORAGE_KEY = 'codex_addon_panel_collapsed';
+    const uiGuard = document.createElement('style');
+    uiGuard.textContent = `html:not(.codex-si-ui-ready) :is(
+        #codex-addon-dock,
+        #codex-stones-launcher,
+        #codex-stones-settings,
+        #codex-auto-bless-button,
+        #codex-auto-bless,
+        #Auto-X-launcher,
+        #Auto-X,
+        #codex-ulepszarka-launcher,
+        #codex-ulepszarka-panel
+    ){visibility:hidden!important;opacity:0!important;pointer-events:none!important}`;
+    (document.head || document.documentElement).append(uiGuard);
     const BUTTON_IDS = [
         'codex-stones-launcher',
         'codex-auto-bless-button',
@@ -150,9 +163,18 @@ border-radius:0 0 3px 3px!important;
         render();
     };
 
+    const gameInterfaceReady = () => {
+        if (document.readyState !== 'complete' || !document.body || !window.hero || window.g?.init !== 5) return false;
+        const game = document.querySelector('#base') || document.querySelector('#background');
+        if (!game) return false;
+        const rect = game.getBoundingClientRect();
+        return rect.width >= 300 && rect.height >= 200;
+    };
+
     const boot = window.setInterval(() => {
-        if (!document.body || !window.g || !window.hero) return;
+        if (!gameInterfaceReady()) return;
         window.clearInterval(boot);
+        document.documentElement.classList.add('codex-si-ui-ready');
         createPanel();
     }, 250);
 })();
