@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.1.4
+// @version      1.1.5
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -273,7 +273,7 @@
         panel.hidden = true;
         Object.assign(panel.style, {
             position: 'fixed', zIndex: '2147483642', width: '55px', padding: '5px', color: '#eee',
-            background: 'rgba(20,14,26,.97)', border: '1px solid #8b55bd', borderRadius: '5px',
+            background: 'rgba(20,14,26,.97)', border: '1px solid #140e1a', borderRadius: '5px',
             boxShadow: '0 3px 12px #000', font: '12px Arial, sans-serif'
         });
         const label = document.createElement('label');
@@ -284,7 +284,10 @@
         input.max = '24';
         input.step = '1';
         input.value = String(FONT_SIZE);
-        Object.assign(input.style, { width: '45px', margin: '0' });
+        Object.assign(input.style, {
+            width: '45px', margin: '0', color: '#eee', background: '#140e1a',
+            border: '1px solid #140e1a', borderRadius: '2px', outline: 'none', colorScheme: 'dark'
+        });
         label.append(input);
         panel.append(label);
         document.body.append(launcher, panel);
