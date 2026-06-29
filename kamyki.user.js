@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.1.2
+// @version      1.1.3
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -252,13 +252,19 @@
         launcher.type = 'button';
         launcher.title = 'Kamyki - rozmiar podpisow';
         launcher.setAttribute('aria-label', 'Ustaw rozmiar podpisow teleportow');
-        launcher.textContent = 'T';
         Object.assign(launcher.style, {
-            position: 'fixed', zIndex: '999999', width: '26px', height: '26px', padding: '0',
-            display: 'grid', placeItems: 'center', color: '#ff5252', background: 'rgba(38,15,15,.94)',
-            border: '1px solid #d83b3b', boxShadow: '0 0 6px rgba(216,59,59,.65)', cursor: 'pointer',
+            position: 'fixed', zIndex: '999999', width: '26px', height: '26px', padding: '0', overflow: 'hidden',
+            display: 'grid', placeItems: 'center', color: '#63dc72', background: 'rgba(12,38,18,.94)',
+            border: '1px solid #35b653', boxShadow: '0 0 7px rgba(53,182,83,.8)', cursor: 'pointer',
             font: '700 14px/1 Arial, sans-serif'
         });
+        const itemIcon = document.createElement('span');
+        itemIcon.className = 'item item-id-837984866 item-tpl-33073';
+        Object.assign(itemIcon.style, {
+            position: 'static', display: 'block', width: '24px', height: '24px',
+            margin: '0', pointerEvents: 'none'
+        });
+        launcher.append(itemIcon);
 
         const panel = document.createElement('div');
         panel.id = 'codex-stones-settings';
