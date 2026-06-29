@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.1.3
+// @version      1.1.4
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -262,7 +262,9 @@
         itemIcon.className = 'item item-id-837984866 item-tpl-33073';
         Object.assign(itemIcon.style, {
             position: 'static', display: 'block', width: '24px', height: '24px',
-            margin: '0', pointerEvents: 'none'
+            margin: '0', pointerEvents: 'none',
+            backgroundImage: "url('https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/assets/kamyki.gif')",
+            backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'contain'
         });
         launcher.append(itemIcon);
 
