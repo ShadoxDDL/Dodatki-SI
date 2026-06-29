@@ -3,7 +3,7 @@
 // @description  Auto-X dla SI
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
-// @version      1.0.2
+// @version      1.0.3
 // @author       Libit
 // @match        http*://*.margonem.pl/
 // @exclude      http*://margonem.*/*
@@ -418,7 +418,7 @@
         launcher.type = 'button';
         launcher.title = 'Auto-X';
         launcher.setAttribute('aria-label', 'Otworz Auto-X');
-        launcher.textContent = '';
+        launcher.textContent = 'X';
         document.body.append(launcher);
 
         main.hidden = ls.panelHidden;
@@ -635,10 +635,6 @@ border-radius:3px;
 box-shadow:0 0 6px rgba(216,59,59,.65),0 2px 7px #000;
 cursor:pointer;
 font:700 14px/1 Arial,Helvetica,sans-serif;
-background-image:url('https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/assets/autox-icon.png');
-background-position:center;
-background-repeat:no-repeat;
-background-size:20px 20px;
 }
 #Auto-X-launcher.active {
 color:#63dc72;

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Ulepszarka SI
 // @namespace    local.codex.margonem.ulepszarka
-// @version      0.3.4
+// @version      0.3.5
 // @description  Niezalezny modul Ulepszarki do Panelu dodatkow.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
@@ -259,13 +259,11 @@ function siUlepszarka(){
     ulepszarkaLauncher.type = 'button';
     ulepszarkaLauncher.title = 'Ulepszarka';
     ulepszarkaLauncher.setAttribute('aria-label', 'Otworz Ulepszarke');
-    ulepszarkaLauncher.textContent = '';
+    ulepszarkaLauncher.textContent = 'U';
     Object.assign(ulepszarkaLauncher.style, {
         position: 'fixed', zIndex: '999999', width: '26px', height: '26px', padding: '0',
         display: 'grid', placeItems: 'center', cursor: 'pointer',
-        font: '700 14px/1 Arial, sans-serif',
-        backgroundImage: "url('https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/assets/ulepszarka-icon.png')",
-        backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '21px 21px'
+        font: '700 14px/1 Arial, sans-serif'
     });
     const updateUlepszarkaLauncher = () => {
         const visible = globalBox.style.display !== 'none';
