@@ -1,8 +1,6 @@
 // ==UserScript==
-// @name         Margonem - Pakiet dodatkow SI
-// @namespace    local.codex.margonem.bundle
-// @version      1.2.0
-// @description  Jeden instalator pobierajacy najnowsze moduly po kazdym odswiezeniu strony.
+// @name         Dodatki-SI
+// @version      1.2.1
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/pakiet.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/pakiet.user.js
 // @match        http*://*.margonem.pl/*
