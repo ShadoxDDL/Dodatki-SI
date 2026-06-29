@@ -3,7 +3,7 @@
 // @description  Auto-X dla SI
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
-// @version      1.0.1
+// @version      1.0.2
 // @author       Libit
 // @match        http*://*.margonem.pl/
 // @exclude      http*://margonem.*/*
@@ -385,7 +385,6 @@
                 button.classList.add('Auto-X-ON');
                 button.classList.remove('Auto-X-OFF');
             }
-            launcher.classList.toggle('active', Engine.settings.enabled);
             saveSettings();
         }
         const turnAutoF = () => {
@@ -420,10 +419,10 @@
         launcher.title = 'Auto-X';
         launcher.setAttribute('aria-label', 'Otworz Auto-X');
         launcher.textContent = '';
-        launcher.classList.toggle('active', Engine.settings.enabled);
         document.body.append(launcher);
 
         main.hidden = ls.panelHidden;
+        launcher.classList.toggle('active', !main.hidden);
         launcher.setAttribute('aria-expanded', String(!main.hidden));
 
         const blockedEvents = [
@@ -719,6 +718,7 @@ box-shadow:0 0 7px rgba(53,182,83,.8),0 2px 7px #000;
             event.stopPropagation();
             main.hidden = !main.hidden;
             ls.panelHidden = main.hidden;
+            launcher.classList.toggle('active', !main.hidden);
             launcher.setAttribute('aria-expanded', String(!main.hidden));
             if (!main.hidden) {
                 ls.docked = true;

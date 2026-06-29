@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Ulepszarka SI
 // @namespace    local.codex.margonem.ulepszarka
-// @version      0.3.3
+// @version      0.3.4
 // @description  Niezalezny modul Ulepszarki do Panelu dodatkow.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/ulepszarka.user.js
@@ -268,8 +268,9 @@ function siUlepszarka(){
         backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '21px 21px'
     });
     const updateUlepszarkaLauncher = () => {
-        ulepszarkaLauncher.classList.toggle('active', work);
-        Object.assign(ulepszarkaLauncher.style, work ? {
+        const visible = globalBox.style.display !== 'none';
+        ulepszarkaLauncher.classList.toggle('active', visible);
+        Object.assign(ulepszarkaLauncher.style, visible ? {
         color: '#63dc72', backgroundColor: 'rgba(12,38,18,.94)', border: '1px solid #35b653',
         boxShadow: '0 0 7px rgba(53,182,83,.8)'
     } : {
@@ -283,6 +284,7 @@ function siUlepszarka(){
         event.preventDefault();
         event.stopPropagation();
         globalBox.style.display = globalBox.style.display === 'none' ? 'block' : 'none';
+        updateUlepszarkaLauncher();
     });
 
     let currentX,currentY,isDragging = false;
