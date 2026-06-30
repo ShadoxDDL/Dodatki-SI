@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.1.5
+// @version      1.1.6
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -303,6 +303,10 @@
                 input.focus();
             }
         });
+        document.addEventListener('pointerdown', event => {
+            if (panel.hidden || panel.contains(event.target) || launcher.contains(event.target)) return;
+            panel.hidden = true;
+        }, true);
         input.addEventListener('input', () => {
             const value = Math.min(24, Math.max(6, Number(input.value) || 10));
             FONT_SIZE = value;
