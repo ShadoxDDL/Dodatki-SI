@@ -3,7 +3,7 @@
 // @description  Auto-X dla SI
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
-// @version      1.0.3
+// @version      1.0.4
 // @author       Libit
 // @match        http*://*.margonem.pl/
 // @exclude      http*://margonem.*/*
@@ -265,10 +265,6 @@
 
             if (!inBattle) this.wasInBattle = false;
 
-            if (!this.settings.enabled) {
-                return;
-            }
-
             if (this.settings.escapeQueued || this.escapeInProgress) {
                 return;
             }
@@ -283,6 +279,10 @@
             }
 
             this.quickFightTriggered = false;
+
+            if (!this.settings.enabled) {
+                return;
+            }
 
             if (this.map.pvp != 2 && this.map.pvp != 4) return;
 
