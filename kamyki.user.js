@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.1.9
+// @version      1.2.0
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -178,16 +178,17 @@
     }
 
     function getItemStats(it) {
-        return it._cachedStats ?? parseStats(it.stat);
+        return { ...parseStats(it.stat), ...(it._cachedStats || {}) };
     }
 
     function getItemTp(it) {
         const s = getItemStats(it);
-        return s.teleport || (s.custom_teleport && s.custom_teleport !== "true" && s.custom_teleport) || "";
+        return [s.custom_teleport, s.teleport]
+            .find(value => value && String(value).toLowerCase() !== "true") || "";
     }
 
     function getTpMap(tp) {
-        return tp.split(",")[0];
+        return String(tp).match(/\d+/)?.[0] || "";
     }
 
     function onItem(items) {
