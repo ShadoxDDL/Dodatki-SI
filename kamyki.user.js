@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.1.6
+// @version      1.1.7
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -155,19 +155,15 @@
         return div;
     }
 
-    async function appendItemOverlay(id, text) {
+    function appendItemOverlay(id, text) {
         if (NI) {
             const el = document.querySelector(`.item-id-${id}`);
             if (!el || el.querySelector(".priw8-item-overlay-text")) return;
             el.appendChild(createTextOverlay(text));
         } else {
-            g.loadQueue.push({
-                fun: async () => {
-                    const el = document.querySelector(`#item${id}`);
-                    if (!el || el.querySelector(".priw8-item-overlay-text")) return;
-                    el.appendChild(createTextOverlay(text));
-                }
-            });
+            const el = document.querySelector(`#item${id}`);
+            if (!el || el.querySelector(".priw8-item-overlay-text")) return;
+            el.appendChild(createTextOverlay(text));
         }
     }
 
@@ -241,6 +237,11 @@
         const style = document.createElement("style");
         style.innerHTML = css;
         document.head.appendChild(style);
+
+        window.setInterval(() => {
+            const items = NI ? window.Engine?.items?.getAll?.() : window.g?.item;
+            if (items) onItem(items);
+        }, 500);
     }
 
     function createStonesSettings() {
