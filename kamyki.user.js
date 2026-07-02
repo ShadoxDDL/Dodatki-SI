@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.2.0
+// @version      1.2.1
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -85,6 +85,7 @@
   "5684": "P9",
   "5685": "P9",
   "5694": "YAOT",
+  "5708": "TEZA",
   "5709": "TEZA",
   "5851": "SHEBA",
   "5856": "BUREK",
