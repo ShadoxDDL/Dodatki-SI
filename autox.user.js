@@ -3,7 +3,7 @@
 // @description  Auto-X dla SI
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/autox.user.js
-// @version      1.0.4
+// @version      1.0.5
 // @author       Libit
 // @match        http*://*.margonem.pl/
 // @exclude      http*://margonem.*/*
@@ -272,8 +272,8 @@
             if (inBattle) {
                 const attackedTarget = this.attackedTargets.get(String(this.target?.id));
                 if (attackedTarget) attackedTarget.sawBattle = true;
-                if (!this.quickFightTriggered) {
-                    this.quickFightTriggered = this.setBattleMode(this.settings.enabledAutoF);
+                if (this.settings.enabledAutoF && !this.quickFightTriggered) {
+                    this.quickFightTriggered = this.setBattleMode(true);
                 }
                 return;
             }
