@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.2.1
+// @version      1.2.2
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -35,6 +35,7 @@
   "1526": "HENR",
   "1527": "HELG",
   "1746": "KIC",
+  "1901": "CIUT",
   "1912": "FURB",
   "2021": "ŹRÓDŁ",
   "2024": "MAGUA",
