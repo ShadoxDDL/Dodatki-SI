@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.2.4
+// @version      1.2.5
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -160,13 +160,30 @@
     function appendItemOverlay(id, text) {
         if (NI) {
             const el = document.querySelector(`.item-id-${id}`);
-            if (!el || el.querySelector(".priw8-item-overlay-text")) return;
+            if (!el) return;
+            const current = el.querySelector(".priw8-item-overlay-text");
+            if (current) {
+                current.textContent = text;
+                return;
+            }
             el.appendChild(createTextOverlay(text));
         } else {
             const el = document.querySelector(`#item${id}`);
-            if (!el || el.querySelector(".priw8-item-overlay-text")) return;
+            if (!el) return;
+            const current = el.querySelector(".priw8-item-overlay-text");
+            if (current) {
+                current.textContent = text;
+                return;
+            }
             el.appendChild(createTextOverlay(text));
         }
+    }
+
+    function removeItemOverlay(id) {
+        const selector = NI ? `.item-id-${id}` : `#item${id}`;
+        document.querySelector(selector)
+            ?.querySelector(".priw8-item-overlay-text")
+            ?.remove();
     }
 
     function parseStats(stats) {
@@ -179,8 +196,24 @@
         return res;
     }
 
+    function itemLooksLikeTeleport(it) {
+        const text = [it.name, it.tip, it.stat]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+        return /teleport|kamie[nń]|kamyk|zw[oó]j/.test(text);
+    }
+
     function getItemStats(it) {
-        return { ...parseStats(it.stat), ...(it._cachedStats || {}) };
+        const parsed = parseStats(it.stat);
+        if (
+            itemLooksLikeTeleport(it) &&
+            it._cachedStats &&
+            typeof it._cachedStats === "object"
+        ) {
+            return { ...parsed, ...it._cachedStats };
+        }
+        return parsed;
     }
 
     function getItemTp(it) {
@@ -198,6 +231,7 @@
             const tp = getItemTp(items[id]);
             const label = config[tp] || config[getTpMap(tp)];
             if (label) appendItemOverlay(id, label);
+            else removeItemOverlay(id);
         }
     }
 
