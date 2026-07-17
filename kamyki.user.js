@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Margonem - Kamyki z podpisami SI
 // @namespace    local.codex.margonem.stones
-// @version      1.2.2
+// @version      1.2.3
 // @description  Stale aktywne podpisy teleportow z ustawieniem wielkosci czcionki.
 // @updateURL    https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
 // @downloadURL  https://raw.githubusercontent.com/ShadoxDDL/Dodatki-SI/main/kamyki.user.js
@@ -183,20 +183,31 @@
         return { ...parseStats(it.stat), ...(it._cachedStats || {}) };
     }
 
-    function getItemTp(it) {
+    function getItemTpValues(it) {
         const s = getItemStats(it);
-        return [s.custom_teleport, s.teleport]
-            .find(value => value && String(value).toLowerCase() !== "true") || "";
+        return [s.custom_teleport, s.teleport, it.stat]
+            .filter(value => value && String(value).toLowerCase() !== "true")
+            .map(String);
     }
 
-    function getTpMap(tp) {
-        return String(tp).match(/\d+/)?.[0] || "";
+    function getItemLabel(it) {
+        const values = getItemTpValues(it);
+        for (const value of values) {
+            if (config[value]) return config[value];
+        }
+
+        for (const value of values) {
+            const keys = String(value).match(/\d+/g) || [];
+            const key = keys.find(mapId => config[mapId]);
+            if (key) return config[key];
+        }
+
+        return "";
     }
 
     function onItem(items) {
         for (const id in items) {
-            const tp = getItemTp(items[id]);
-            const label = config[tp] || config[getTpMap(tp)];
+            const label = getItemLabel(items[id]);
             if (label) appendItemOverlay(id, label);
         }
     }
